@@ -1,11 +1,20 @@
 {
-  "name": "rkylin_mc_wxa_node",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "name": "rkylin-mc-web-node",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "JoeLiu",
-  "license": "ISC"
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "^1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "express-session": "^1.15.6",
+    "jade": "^1.11.0",
+    "morgan": "^1.9.0",
+    "request": "^2.83.0",
+    "serve-favicon": "^2.4.5",
+    "node-rsa": "^0.4.2"
+  }
 }
