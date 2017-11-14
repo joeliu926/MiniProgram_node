@@ -8,6 +8,32 @@ function registor(app) {
         {
             root:"/user",
             require: '../routes/users.js'
+        },
+        {
+            root:"/unionid",
+            require: '../routes/unionid.js'
+        }
+        ,
+        {
+            root:"/product",
+            require: '../routes/product.js'
+        }
+        ,
+        {
+            root:"/case",
+            require: '../routes/case.js'
+        },
+        {
+            root:"/event",
+            require: '../routes/event.js'
+        },
+        {
+            root:"/customer",
+            require: '../routes/customer.js'
+        },
+        {
+            root:"/consult",
+            require: '../routes/consultServer.js'
         }
     ];
 
