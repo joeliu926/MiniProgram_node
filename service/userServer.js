@@ -1,26 +1,33 @@
-/**
- * Created by JoeLiu on 2017-10-23.
- */
-
 var CONSTANT=require('../config/constant');
 var httpClient=require('../utils/httpClient');
 var appUtil=require('../utils/appUtils');
 var defualtCfg={
-    url:CONSTANT.remoteHost+":"+CONSTANT.remotePort+'/dashboard/platform',
+    url:CONSTANT.remoteHost+":"+CONSTANT.remotePort+'/api/users',
     contentType:'application/json'
 };
 
-function userate(req, res, next){
+function userinfo(req, res, next){
 
-    res.send({'aaa':'aaaa'});
-   
+    console.log(req.body);
+    //defualtCfg.method="POST";
+    var opt=appUtil.extend({},defualtCfg);
+    opt.url+="/wx/"+req.body.unionid;
+    //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
+   // opt.data=req.body;
+    console.log(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            res.send(error);
+        }
+        else {
+            console.log(JSON.parse(body));
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+    //res.send({'aaa':'aaaa'});
 }
-function usertimes(req,res,next){
-	 res.send({'usertimes':'this is user times aaaaa'});
-}
-
-
 module.exports = {
-    userate: userate,
-    usertimes:usertimes
+    userinfo: userinfo
 }

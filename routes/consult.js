@@ -4,4 +4,7 @@ var consultServer =require('../service/consultServer');
 router.post('/addconsultation', function(req, res, next) {
     consultServer.addconsultation(req, res, next);
 });
+router.post('/list', function(req, res, next) {
+    consultServer.consultationlist(req, res, next);
+});
 module.exports = router;

@@ -7,11 +7,30 @@ var defualtCfg={
 };
 
 function addconsultation(req, res, next){
-
-    console.log(req.body);
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
     opt.url+="";
+    //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
+    opt.data=req.body;
+    console.log(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            res.send(error);
+        }
+        else {
+            console.log(JSON.parse(body));
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+    //res.send({'aaa':'aaaa'});
+}
+
+function consultationlist(req, res, next){
+    defualtCfg.method="POST";
+    var opt=appUtil.extend({},defualtCfg);
+    opt.url+="/list"//?unionid="+req.body.unionId+"&mobile="+req.body.mobile+"2222";
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     opt.data=req.body;
     console.log(opt.url);
@@ -33,4 +52,5 @@ function addconsultation(req, res, next){
 
 module.exports = {
     addconsultation: addconsultation,
+    consultationlist:consultationlist
 }

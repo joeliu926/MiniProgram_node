@@ -7,7 +7,6 @@ var defualtCfg={
 };
 
 function addcustomer(req, res, next){
-
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
     opt.url+="addCustomer";
@@ -27,7 +26,6 @@ function addcustomer(req, res, next){
     httpClient(opt);
 
     //res.send({'aaa':'aaaa'});
-
 }
 
 module.exports = {

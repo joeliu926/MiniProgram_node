@@ -11,7 +11,7 @@ function list(req, res, next){
 
     defualtCfg.method="get";
     var opt=appUtil.extend({},defualtCfg);
-    opt.url+="list/"+req.body.unionId;
+    opt.url+="list?unionid="+req.body.unionId;
     console.log(opt.url);
     opt.callBack=function(error, response, body){
         if(error)
