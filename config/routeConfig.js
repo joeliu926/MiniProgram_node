@@ -33,7 +33,7 @@ function registor(app) {
         },
         {
             root:"/consult",
-            require: '../routes/consultServer.js'
+            require: '../routes/consult.js'
         }
     ];
 

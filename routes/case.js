@@ -8,5 +8,4 @@ router.post('/list', function(req, res, next) {
 router.post('/detail', function(req, res, next) {
     caseServer.detail(req, res, next);
 });
-
 module.exports = router;

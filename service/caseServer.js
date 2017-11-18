@@ -49,8 +49,6 @@ function detail(req,res,next){
     httpClient(opt);
    // res.send({'usertimes':'this is user times aaaaa'});
 }
-
-
 module.exports = {
     list: list,
     detail:detail
