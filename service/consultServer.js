@@ -37,6 +37,7 @@ function consultationlist(req, res, next){
     opt.callBack=function(error, response, body){
         if(error)
         {
+            console.log(error);
             res.send(error);
         }
         else {
@@ -48,7 +49,7 @@ function consultationlist(req, res, next){
     //res.send({'aaa':'aaaa'});
 }
 function trail(req, res, next){
-    defualtCfg.method="POST";
+    defualtCfg.method="get";
     var opt=appUtil.extend({},defualtCfg);
     opt.url+="/"+req.body.unionId+"/"+req.body.consultingId;//?unionid="+req.body.unionId+"&mobile="+req.body.mobile+"2222";
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
