@@ -28,6 +28,10 @@ function userinfo(req, res, next){
     httpClient(opt);
     //res.send({'aaa':'aaaa'});
 }
+function test(req, res, next){
+    res.send({'aaa':'this is a test'});
+}
 module.exports = {
-    userinfo: userinfo
+    userinfo: userinfo,
+    test:test
 }

@@ -2,8 +2,8 @@
  * Created by JoeLiux on 2017-10-23.
  */
 module.exports = {
-
-    remoteHost:'http://140.143.185.73',  //http://101.132.161.222:8082
+    remoteHost:'http://140.143.184.52',  //test env
+   // remoteHost:'http://140.143.185.73',  //production
     remotePort:'8082',
     cookie: {
         identityKey:"rky_mc_wxa_node",

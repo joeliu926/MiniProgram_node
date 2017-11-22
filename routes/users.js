@@ -8,5 +8,7 @@ router.post('/userinfo', function(req, res, next) {
 /*router.post('/usertimes', function(req, res, next) {
   userServer.usertimes(req, res, next);
 });*/
-
+router.get('/test', function(req, res, next) {
+    userServer.test(req, res, next);
+});
 module.exports = router;
