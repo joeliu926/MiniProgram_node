@@ -34,6 +34,10 @@ function registor(app) {
         {
             root:"/consult",
             require: '../routes/consult.js'
+        },
+        {
+            root:"/appointment",
+            require: '../routes/appointment.js'
         }
     ];
 

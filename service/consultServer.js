@@ -76,12 +76,35 @@ function trail(req, res, next){
     //res.send({'aaa':'aaaa'});
 }
 /**
- * 获取咨询项目/api/consultation/{会话ID}/product/{客户unionid}
+ * 获取单个用户咨询轨迹
+ */
+function singletrail(req, res, next){
+    defualtCfg.method="get";
+    var opt=appUtil.extend({},defualtCfg);
+   // opt.url+="/"+req.body.unionId+"/"+req.body.consultingId;//?unionid="+req.body.unionId+"&mobile="+req.body.mobile+"2222";
+    opt.url+="/track?unionId="+req.body.unionId+"&consultingId="+req.body.consultingId;
+    console.log(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            res.send(error);
+        }
+        else {
+            console.log(JSON.parse(body));
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+    //res.send({'aaa':'aaaa'});
+}
+/**
+ * 获取咨询项目 ///api/consultation/product?sessionId=&customerUnionid=
  */
 function consultitems(req, res, next){
     defualtCfg.method="get";
     var opt=appUtil.extend({},defualtCfg);
-    opt.url+="/"+req.body.id+"/product/"+req.body.customerUnionId;
+    //opt.url+="/"+req.body.id+"/product/"+req.body.customerUnionId;
+    opt.url+="/product?sessionId="+req.body.id+"&customerUnionid="+req.body.customerUnionId;
     console.log(opt.url);
     opt.callBack=function(error, response, body){
         if(error)
@@ -124,6 +147,7 @@ module.exports = {
     addconsultation: addconsultation,
     consultationlist:consultationlist,
     trail:trail,
+    singletrail:singletrail,
     consultitems:consultitems,
     consultcustomers:consultcustomers
 }

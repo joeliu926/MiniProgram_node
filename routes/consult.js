@@ -19,6 +19,12 @@ router.post('/list', function(req, res, next) {
 router.post('/trail', function(req, res, next) {
     consultServer.trail(req, res, next);
 });
+/**
+ * 获取单个用户咨询轨迹
+ */
+router.post('/singletrail', function(req, res, next) {
+    consultServer.singletrail(req, res, next);
+});
 
 /**
  * 获取咨询项目
