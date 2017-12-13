@@ -127,7 +127,12 @@ function consultitems(req, res, next){
 function consultcustomers(req, res, next){
     defualtCfg.method="get";
     var opt=appUtil.extend({},defualtCfg);
-    opt.url+="/"+req.body.id+"/customers/list?wxNickname="+req.body.wxNickname+"&fieldValue="+req.body.fieldValue;
+    let id=req.body.id;
+    let wxNickname = req.body.wxNickname;
+    let fieldValue = req.body.fieldValue;
+    let pageNo = req.body.pageNo;
+    let pageSize= req.body.pageSize;
+    opt.url+=`/${id}/customers/list?wxNickname=${wxNickname}&fieldValue=${fieldValue}&pageNo=${pageNo}&pageSize=${pageSize}`;
     console.log(opt.url);
     opt.callBack=function(error, response, body){
         if(error)
