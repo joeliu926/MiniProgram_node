@@ -42,6 +42,10 @@ function registor(app) {
         {
             root:"/clue",
             require: '../routes/clue.js'
+        },
+        {
+            root:"/test",
+            require: '../routes/test.js'
         }
     ];
 
