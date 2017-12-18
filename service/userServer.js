@@ -1,6 +1,7 @@
 var CONSTANT=require('../config/constant');
 var httpClient=require('../utils/httpClient');
 var appUtil=require('../utils/appUtils');
+var loger=require('../utils/loger');
 var defualtCfg={
     url:CONSTANT.remoteHost+":"+CONSTANT.remotePort+'/api/users',
     contentType:'application/json'
