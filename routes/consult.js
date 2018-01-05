@@ -47,10 +47,16 @@ router.post('/sharecase', function(req, res, next) {
     consultServer.sharecase(req, res, next);
 });
 /**
- * 咨询会话更新接口，可更新会话与案例的关系，会话与项目的关系
+ * 咨询会话更新接口，可更新会话与案例的关系，会话与项目的关系entry
  */
 router.post('/consultantupdate', function(req, res, next) {
     consultServer.consultantupdate(req, res, next);
+});
+/**
+ * 客户进入咨询师分享的小程序，对客户信息，线索信息进行维护
+ */
+router.post('/entry', function(req, res, next) {
+    consultServer.entry(req, res, next);
 });
 
 module.exports = router;

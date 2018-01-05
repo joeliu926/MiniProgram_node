@@ -195,6 +195,28 @@ function consultantupdate(req, res, next){
     httpClient(opt);
 }
 
+/**
+ * 客户进入咨询师分享的小程序，对客户信息，线索信息进行维护。 POST /api/consultation/entry
+ */
+function entry(req, res, next){
+    defualtCfg.method="POST";
+    var opt=appUtil.extend({},defualtCfg);
+    opt.url+=`/entry`;
+    opt.data=req.body;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            loger.error(error);
+            res.send(error);
+        }
+        else {
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+
 
 
 module.exports = {
@@ -205,5 +227,6 @@ module.exports = {
     consultitems:consultitems,
     consultcustomers:consultcustomers,
     sharecase:sharecase,
-    consultantupdate:consultantupdate
+    consultantupdate:consultantupdate,
+    entry:entry
 }

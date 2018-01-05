@@ -46,6 +46,10 @@ function registor(app) {
         {
             root:"/test",
             require: '../routes/test.js'
+        },
+        {
+            root:"/wx",
+            require: '../routes/wx.js'
         }
     ];
 
