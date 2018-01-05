@@ -4,6 +4,7 @@
 var request = require('request');
 const util = require('util');
 var querystring = require("querystring");
+var loger=require("./loger");
 var requestType={
     'multipart/form-data':function(arg){
         request.post({url:arg.url, formData:arg.data}, function (error, response, body) {
@@ -16,7 +17,8 @@ var requestType={
         })
     },
     'application/json':function(arg){
-        console.log(arg.url,JSON.stringify(arg.data));
+        //console.log(arg.url,JSON.stringify(arg.data));
+        loger.info(arg.url,JSON.stringify(arg.data));
         request({
             url:arg.url,//arg.url,
             method:arg.method, //"POST",

@@ -39,4 +39,18 @@ router.post('/consultcustomers', function(req, res, next) {
     consultServer.consultcustomers(req, res, next);
 });
 
+
+/**
+ *  通过会话id获取单次分享的案例ID
+ */
+router.post('/sharecase', function(req, res, next) {
+    consultServer.sharecase(req, res, next);
+});
+/**
+ * 咨询会话更新接口，可更新会话与案例的关系，会话与项目的关系
+ */
+router.post('/consultantupdate', function(req, res, next) {
+    consultServer.consultantupdate(req, res, next);
+});
+
 module.exports = router;

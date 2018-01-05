@@ -1,6 +1,7 @@
 var CONSTANT=require('../config/constant');
 var httpClient=require('../utils/httpClient');
 var appUtil=require('../utils/appUtils');
+var loger=require("./../utils/loger");
 var defualtCfg={
     url:CONSTANT.remoteHost+":"+CONSTANT.remotePort+'/api/consultation',
     contentType:'application/json'
@@ -147,6 +148,54 @@ function consultcustomers(req, res, next){
     httpClient(opt);
 }
 
+/**
+ * 根据会话id获取单词分享的案例id  GET /api/consultation/share-case?sessionId={sessionId}
+ */
+function sharecase(req, res, next){
+    defualtCfg.method="get";
+    var opt=appUtil.extend({},defualtCfg);
+    let sessionId = req.body.sessionId;
+    opt.url+=`/share-case?sessionId=${sessionId}`;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            loger.error(error);
+            res.send(error);
+        }
+        else {
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+/**
+ * 咨询会话更新接口，可更新会话与案例的关系，会话与项目的关系。  PUT /api/consultation
+ */
+function consultantupdate(req, res, next){
+    defualtCfg.method="PUT";
+    var opt=appUtil.extend({},defualtCfg);
+    let consultantUnionid = req.body.consultantUnionid;
+    let consultingId = req.body.consultingId;
+    let cases = req.body.cases;
+    let products = req.body.products;
+    opt.url+=``;
+    opt.data=req.body;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            loger.error(error);
+            res.send(error);
+        }
+        else {
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+
+
 
 module.exports = {
     addconsultation: addconsultation,
@@ -154,5 +203,7 @@ module.exports = {
     trail:trail,
     singletrail:singletrail,
     consultitems:consultitems,
-    consultcustomers:consultcustomers
+    consultcustomers:consultcustomers,
+    sharecase:sharecase,
+    consultantupdate:consultantupdate
 }
