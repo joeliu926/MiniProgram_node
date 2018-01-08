@@ -53,10 +53,22 @@ router.post('/consultantupdate', function(req, res, next) {
     consultServer.consultantupdate(req, res, next);
 });
 /**
- * 客户进入咨询师分享的小程序，对客户信息，线索信息进行维护
+ * 客户进入咨询师分享的小程序，对客户信息，线索信息进行维护sharelike
  */
 router.post('/entry', function(req, res, next) {
     consultServer.entry(req, res, next);
+});
+/**
+ * 查询一次分享中，单个客户对某个案例的点赞状态
+ */
+router.post('/getsharelike', function(req, res, next) {
+    consultServer.getsharelike(req, res, next);
+});
+/**
+ *  客户进入咨询师分享的小程序，对某个案例进行点赞操作 或者进行 提交资料给医生操作
+ */
+router.post('/handelsharecase', function(req, res, next) {
+    consultServer.handelsharecase(req, res, next);
 });
 
 module.exports = router;
