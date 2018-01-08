@@ -50,6 +50,9 @@ function registor(app) {
         {
             root:"/wx",
             require: '../routes/wx.js'
+        },{
+            root:"/clinic",
+            require: '../routes/clinic.js'
         }
     ];
 
