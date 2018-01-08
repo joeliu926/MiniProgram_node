@@ -218,6 +218,55 @@ function entry(req, res, next){
 }
 
 
+/**
+ * 查询一次分享中，单个客户对某个案例的点赞状态 GET /api/consultation/share-case/like
+ */
+function getsharelike(req, res, next){
+    defualtCfg.method="GET";
+    var opt=appUtil.extend({},defualtCfg);
+    let customerUnionId = req.body.customerUnionId;//customerUnionId:客户unionId
+    let sessionId = req.body.sessionId;//sessionId:会话id
+    let caseId = req.body.caseId; //caseId:案例id 支持多个案例
+    opt.url+=`/share-case/like`;
+    opt.data=req.body;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            loger.error(error);
+            res.send(error);
+        }
+        else {
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+/**
+ *  客户进入咨询师分享的小程序，对某个案例进行点赞操作 或者进行 提交资料给医生操作  POST /api/consultation/share-case
+ */
+function handelsharecase(req, res, next){
+    defualtCfg.method="POST";
+    var opt=appUtil.extend({},defualtCfg);
+    let customerUnionId = req.body.customerUnionId;//customerUnionId:客户unionId
+    let sessionId = req.body.sessionId;//sessionId:会话id
+    let caseId = req.body.caseId; //caseId:案例id 支持多个案例
+    opt.url+=`/share-case`;
+    opt.data=req.body;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            loger.error(error);
+            res.send(error);
+        }
+        else {
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+
 
 module.exports = {
     addconsultation: addconsultation,
@@ -228,5 +277,7 @@ module.exports = {
     consultcustomers:consultcustomers,
     sharecase:sharecase,
     consultantupdate:consultantupdate,
-    entry:entry
+    entry:entry,
+    getsharelike:getsharelike,
+    handelsharecase:handelsharecase
 }
