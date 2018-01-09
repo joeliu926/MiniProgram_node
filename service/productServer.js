@@ -12,7 +12,7 @@ function list(req, res, next){
 
     defualtCfg.method="get";
     var opt=appUtil.extend({},defualtCfg);
-    let all=req.body.all?"&all="+req.body.all:"";
+    let all=(req.body.all==0)?"&all="+req.body.all:"";
     let unionId=req.body.unionId;
     opt.url+=`list?unionid=${unionId}${all}`;
     loger.info(opt.url);
