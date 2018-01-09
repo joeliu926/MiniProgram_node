@@ -222,7 +222,7 @@ function entry(req, res, next){
  * 查询一次分享中，单个客户对某个案例的点赞状态 GET /api/consultation/share-case/like
  */
 function getsharelike(req, res, next){
-    defualtCfg.method="GET";
+    defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
     let customerUnionId = req.body.customerUnionId;//customerUnionId:客户unionId
     let sessionId = req.body.sessionId;//sessionId:会话id
