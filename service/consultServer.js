@@ -270,7 +270,7 @@ function handelsharecase(req, res, next){
  *   客户进入咨询师分享的小程序，查询在之前提交的正 反面照片。 GET /api/consultation/share-case/photo?sessionId={sessionId}&customerUnionid={customerUnionid}
  */
 function getpostphoto(req, res, next){
-    defualtCfg.method="POST";
+    defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
     let customerUnionid = req.body.customerUnionid;//customerUnionId:客户unionId
     let sessionId = req.body.sessionId;//sessionId:会话id
