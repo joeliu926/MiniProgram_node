@@ -17,12 +17,16 @@ router.post('/clueremark', function(req, res, next) {
     indexServer.clueremark(req, res, next);
 });
 
+router.post('/remarklist', function(req, res, next) {
+    indexServer.remarklist(req, res, next);
+});
+
 router.post('/clueclose', function(req, res, next) {
     indexServer.clueclose(req, res, next);
 });
 
 router.post('/linkmanupdate', function(req, res, next) {
-    indexServer.clueclose(req, res, next);
+    indexServer.linkmanupdate(req, res, next);
 });
 
 router.post('/linkman', function(req, res, next) {

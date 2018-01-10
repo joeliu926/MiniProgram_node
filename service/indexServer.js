@@ -134,6 +134,25 @@ function linkman(req, res, next){
 }
 
 
+function remarklist(req, res, next){
+    defualtCfg.method="GET";
+    var opt=appUtil.extend({},defualtCfg);
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/clueRemarks/pagelist?clueId=${req.body.clueId}`;
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            res.send(error);
+        }
+        else {
+            console.log("get clue detail====>",JSON.parse(body));
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+
+}
+
+
 module.exports = {
     cluelist: cluelist,
     cluedetail: cluedetail,
@@ -142,4 +161,5 @@ module.exports = {
     clueclose: clueclose,
     linkmanupdate:linkmanupdate,
     linkman:linkman,
+    remarklist:remarklist
 }
