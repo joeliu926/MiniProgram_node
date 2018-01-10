@@ -54,6 +54,10 @@ function registor(app) {
             root:"/clinic",
             require: '../routes/clinic.js'
         }
+        ,{
+            root:"/index",
+            require: '../routes/index.js'
+        }
     ];
 
     requires.forEach(function(item, index) {
