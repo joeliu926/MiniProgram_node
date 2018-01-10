@@ -275,7 +275,6 @@ function getpostphoto(req, res, next){
     let customerUnionid = req.body.customerUnionid;//customerUnionId:客户unionId
     let sessionId = req.body.sessionId;//sessionId:会话id
     opt.url+=`/share-case/photo?sessionId=${sessionId}&customerUnionid=${customerUnionid}`;
-    opt.data=req.body;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){
         if(error)
