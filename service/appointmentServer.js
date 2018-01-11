@@ -58,7 +58,7 @@ function detail(req, res, next){
 function send(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
-    opt.url+="/send";
+    opt.url+="/sendAppointment";
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     opt.data=req.body;
     console.log(opt.url);
