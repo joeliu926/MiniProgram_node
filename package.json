@@ -3,10 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
     "dev": "node  ./bin/www 8045  http://140.143.185.73 8083",
     "dev_forever": "forever start  ./bin/www 8045  http://140.143.185.73 8083",
-
     "sdev": "forever start  ./bin/www 8046 http://140.143.185.73 8083",
     "test": "forever start  ./bin/www 8045 http://140.143.185.73 8086",
     "dist": "forever start  ./bin/www 8041 http://140.143.184.52 8082",
