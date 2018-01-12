@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "node  ./bin/www 8045  http://140.143.185.73 8083",
-    "dev_forever": "forever start  ./bin/www 8045  http://140.143.185.73 8083",
+    "dev_forever": "forever start  ./bin/www 8046  http://140.143.185.73 8083",
     "dev_forever_uat": "forever start  ./bin/www 8045  http://140.143.185.73 8086",
     "test": "node ./bin/www 8045 http://140.143.185.73 8083",
     "dist": "forever start  ./bin/www 8045  http://140.143.184.52 8082",
