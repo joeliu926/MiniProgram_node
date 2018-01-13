@@ -1,5 +1,5 @@
-var crypto = require('crypto')
-
+﻿var crypto = require('crypto')
+var loger=require("./loger");
 function WXBizDataCrypt(appId, sessionKey) {
   this.appId = appId
   this.sessionKey = sessionKey
@@ -13,15 +13,17 @@ WXBizDataCrypt.prototype.decryptData = function (encryptedData, iv) {
 
   try {
      // 解密
-    var decipher = crypto.createDecipheriv('aes-128-cbc', sessionKey, iv)
+    var decipher = crypto.createDecipheriv('aes-128-cbc', sessionKey, iv);
     // 设置自动 padding 为 true，删除填充补位
     decipher.setAutoPadding(true)
-    var decoded = decipher.update(encryptedData, 'binary', 'utf8')
+    var decoded = decipher.update(encryptedData, 'binary', 'utf8');
+      loger.info("----------------decoded------>",decoded);
     decoded += decipher.final('utf8')
     
     decoded = JSON.parse(decoded)
 
   } catch (err) {
+      loger.error("Illegal Buffer-------->",err);
     throw new Error('Illegal Buffer')
   }
 

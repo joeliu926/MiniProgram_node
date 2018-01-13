@@ -4,6 +4,7 @@ var httpClient=require('../utils/httpClient');
 var wxConfig=require('../config/wxaAPI');
 var appUtil=require('../utils/appUtils');
 var WXBizDataCrypt = require('../utils/WXBizDataCrypt');
+var loger=require("./../utils/loger");
 var defualtCfg={
     url:CONSTANT.remoteHost+":"+CONSTANT.remotePort+'/api/wxacode/',
     contentType:'application/json'
@@ -47,13 +48,12 @@ function userinfo(req,res,next){
    var encryptedData= req.body.encryptedData;
     var sessionKey= req.body.sessionKey;
     var iv= req.body.iv;
-    //console.log("wxapi user info-11111------->",req.body);
-    var pc = new WXBizDataCrypt("wx0d601009b9b6ac71", sessionKey);
-//console.log("解密字符串--------》",pc);
+    loger.info("wxapi user info-11111------->",req.body);
+    let appid=wxConfig.appid;
+    var pc = new WXBizDataCrypt(appid, sessionKey);
 
     var data = pc.decryptData(encryptedData , iv);
-
-    //console.log('解密后 data: ', data);
+    loger.info("wxapi decryptData data------->",data);
     res.send({'userinfo':data});
    // res.send({'userinfo':"pppppppppppppppppppp"});
 
