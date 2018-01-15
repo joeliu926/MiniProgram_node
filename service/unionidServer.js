@@ -22,7 +22,7 @@ function code(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
     opt.url=wxConfig.authorize.authorizecode.url.replace("_CODE_",code);
-   // console.log("----------微信授权码---------》",opt.url);
+    loger.info("get auth code url 11111------->",opt.url);
     opt.callBack=function(error, response, body){
         if(error)
         {
@@ -31,7 +31,7 @@ function code(req, res, next){
             res.send(error);
         }
         else {
-            console.log("code-------->",JSON.parse(body));
+            loger.info("code-------->",JSON.parse(body));
             res.send(JSON.parse(body));
         }
     }
