@@ -33,7 +33,6 @@ var requestType={
     }
 };
 /**
- *
  * @param arg
  * arg {} url
  * arg {} method "POST/GET" 默认是GET

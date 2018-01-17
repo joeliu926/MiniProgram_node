@@ -51,19 +51,30 @@ function getQrCode(req,res,next){
         opt.data=req.body;
         opt.data={
             "path": "pages/home/home?query=1",
-            "width": 430,
+            "width": 60,
             "scene":123
         };
         loger.info("this is url-------->",opt.url);
-
-       // httpClient(opt);
         let filePath=path.join(__dirname, '../public/images/'+(new Date().getTime())+'.png');
-        request( {
+       /* request({
             method: 'POST',
             url: opt.url,
             body:JSON.stringify(opt.data)
-        }).pipe(fs.createWriteStream(filePath));
-        res.send({"code":0});
+        }).pipe(fs.createWriteStream(filePath));*/
+      let writeStream= fs.createWriteStream(filePath,{autoClose:true});
+        request({
+            method: 'POST',
+            url: opt.url,
+            body:JSON.stringify(opt.data)
+        }).pipe(writeStream)
+       loger.info("filePath----->",filePath);
+        writeStream.on("finish", function() {
+            var bitmap = fs.readFileSync(filePath);
+            let baseStr=new Buffer(bitmap).toString('base64');
+            res.send({"code":baseStr});
+            console.log("ok");
+            writeStream.end();
+        });
     });
 }
 /**
