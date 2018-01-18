@@ -34,11 +34,11 @@ function createposter(req, res, next){
     //截图参数
     var options = {
         screenSize: {
-            width: 400
-            , height: 600
+            width: 750
+            , height: 1050
         }
         , shotSize: {
-            width: 400
+            width: 750
             , height: 'all'
         }
         , userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)'
