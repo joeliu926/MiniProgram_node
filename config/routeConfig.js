@@ -58,6 +58,10 @@ function registor(app) {
             root:"/index",
             require: '../routes/index.js'
         }
+        ,{
+            root:"/api",
+            require: '../routes/api.js'
+        }
     ];
 
     requires.forEach(function(item, index) {
