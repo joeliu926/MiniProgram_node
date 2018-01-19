@@ -68,6 +68,7 @@ function getQrCode(req,res,next){
             body:JSON.stringify(opt.data)
         }).pipe(writeStream)
        loger.info("filePath----->",filePath);
+
         writeStream.on("finish", function() {
             var bitmap = fs.readFileSync(filePath);
             let baseStr=new Buffer(bitmap).toString('base64');
