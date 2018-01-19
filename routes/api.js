@@ -13,4 +13,10 @@ router.post('/deleteposter', function(req, res, next) {
 });
 
 
+router.post('/getuserid', function(req, res, next) {
+    indexServer.getuserid(req, res, next);
+});
+
+
+
 module.exports = router;

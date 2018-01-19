@@ -49,8 +49,11 @@ function createposter(req, res, next){
     let cpath ='/posterimg/'+dateTime+'.png';
     webshot(fileData, './public'+cpath, options, function(err) {
         if(err){
-            sendObj.data.code=-1;
-            sendObj.data.msg=err;
+            console.log('err',err);
+            sendObj.code=-1;
+            sendObj.data={
+                msg:err.toString()
+            }
         }else{
             sendObj.data= {
                 url:cpath,
@@ -82,7 +85,17 @@ function deleteposter(req, res, next){
 }
 
 
+/*
+ * 获取用户信息开关
+ * */
+function getuserid(req, res, next){
+    res.send({id:'getuserid'})
+}
+
+
+
 module.exports = {
     createposter: createposter,
-    deleteposter:deleteposter
+    deleteposter:deleteposter,
+    getuserid:getuserid
 }
