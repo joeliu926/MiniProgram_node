@@ -67,6 +67,9 @@ function registor(app) {
         } ,{
             root:"/posterinfo",
             require: '../routes/posterinfo.js'
+        },{
+            root:"/wxaqr",
+            require: '../routes/wxaqr.js'
         }
     ];
 

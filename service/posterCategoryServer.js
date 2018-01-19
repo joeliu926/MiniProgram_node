@@ -62,7 +62,7 @@ function list(req, res, next){
     httpClient(opt);
 }
 /**
- * 新建海报 api/posterCategory
+ * 新建海报 api/posterCategory  错误的删除
  * @param req
  * @param res
  * @param next
