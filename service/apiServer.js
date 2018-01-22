@@ -30,7 +30,7 @@ function createposter(req, res, next){
         });
     }
 
-    var dateTime = Date.parse(new Date());
+    var dateTime =new Date().getTime(); //Date.parse(new Date() );
     //截图参数
     var options = {
         screenSize: {
@@ -75,7 +75,7 @@ function deleteposter(req, res, next){
                 }
             };
             if (err){
-                sendObj.data.code=-1;
+                sendObj.code=-1;
                 sendObj.data.msg=err;
             }else{
                 sendObj.data.msg="删除成功";
@@ -89,7 +89,35 @@ function deleteposter(req, res, next){
  * 获取用户信息开关
  * */
 function getuserid(req, res, next){
-    res.send({id:'getuserid'})
+    res.send({key:1,data:{
+        avatarUrl
+            :
+            "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqkeBU8Uo4VdGia1RlXYVOQUzXFPibQmrcWJiaDKWvAwWACU5B9lnGVZiah8t6pkzQzG4ju5gaYEv465w/0",
+        city
+            :
+            "Chaoyang",
+        country
+            :
+            "China",
+        gender
+            :
+            1,
+        language
+            :
+            "zh_CN",
+        nickName
+            :
+            "刘朝1",
+        openId
+            :
+            "oPyH10N6wKmDzdBG1HnuJx5fMG9M",
+        province
+            :
+            "Beijing",
+        unionId
+            :
+            "oDOgS0lr4Ofex8ebO6CAGFAQrX9o"
+    }})
 }
 
 
