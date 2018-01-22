@@ -70,5 +70,13 @@ router.post('/getsharelike', function(req, res, next) {
 router.post('/handelsharecase', function(req, res, next) {
     consultServer.handelsharecase(req, res, next);
 });
+/**
+ * 
+ * 
+ */
+router.post('/interactlist', function(req, res, next) {
+    consultServer.interactlist(req, res, next);
+});
+
 
 module.exports = router;

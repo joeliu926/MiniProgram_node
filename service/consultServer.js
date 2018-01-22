@@ -266,6 +266,31 @@ function handelsharecase(req, res, next){
     };
     httpClient(opt);
 }
+/**
+ *  B端小程序 轨迹互动列表获取
+ */
+function interactlist(req, res, next){
+    defualtCfg.method="GET";
+    var opt=appUtil.extend({},defualtCfg);
+    let clueID=req.body.clueId;  //线索id  
+    // let unionId = req.body.unionId;//unionId:客户unionId
+    // let consultingId = req.body.consultingId;//consultingId:会话id
+    opt.url+=`/getTrack?clueID=${clueID}`;//
+    opt.data=req.body;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            loger.error(error);
+            res.send(error);
+        }
+        else {
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+
 
 
 module.exports = {
@@ -279,5 +304,6 @@ module.exports = {
     consultantupdate:consultantupdate,
     entry:entry,
     getsharelike:getsharelike,
-    handelsharecase:handelsharecase
+    handelsharecase:handelsharecase,
+    interactlist:interactlist,
 }
