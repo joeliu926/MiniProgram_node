@@ -315,6 +315,29 @@ function getpostphoto(req, res, next){
     httpClient(opt);
 }
 
+/**
+ * 通过会话id获取咨询师信息
+ */
+function getconsultinfo(req, res, next){
+    defualtCfg.method="GET";
+    var opt=appUtil.extend({},defualtCfg);
+    //opt.url+="/"+req.body.id+"/product/"+req.body.customerUnionId;
+    let sessionId=req.body.sessionId;
+    opt.url+=`/getConsultInfo/${sessionId}`;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            res.send(error);
+        }
+        else {
+            loger.info(JSON.parse(body));
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+
 
 module.exports = {
     addconsultation: addconsultation,
@@ -329,5 +352,6 @@ module.exports = {
     getsharelike:getsharelike,
     handelsharecase:handelsharecase,
     interactlist:interactlist,
-    getpostphoto:getpostphoto
+    getpostphoto:getpostphoto,
+    getconsultinfo:getconsultinfo
 }

@@ -71,8 +71,7 @@ router.post('/handelsharecase', function(req, res, next) {
     consultServer.handelsharecase(req, res, next);
 });
 /**
- * 
- * 
+ *  b端咨询师用户，进入线索详情 点击互动标签展示 轨迹页面，调用该接口获取，b端咨询师的案例分享轨迹和c端客户的单次会话的关键操作轨迹
  */
 router.post('/interactlist', function(req, res, next) {
     consultServer.interactlist(req, res, next);
@@ -84,5 +83,13 @@ router.post('/interactlist', function(req, res, next) {
 router.post('/getpostphoto', function(req, res, next) {
     consultServer.getpostphoto(req, res, next);
 });
+
+/**
+ *  通过会话id获取咨询师信息
+ */
+router.post('/getconsultinfo', function(req, res, next) {
+    consultServer.getconsultinfo(req, res, next);
+});
+
 
 module.exports = router;

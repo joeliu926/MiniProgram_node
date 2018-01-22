@@ -44,13 +44,14 @@ function sendmessage(req, res, next){
  * @param next
  */
 function getQrCode(req,res,next){
-    baseServer.updateToken(function (accessToken) {
+    //baseServer.updateToken(function (accessToken) {
+    let accessToken="6_7I8S71bjw1N5f4LqHdAl_BiF8TWP6_NOSU7FQqOhaqtMb1X4eNeLPpKRQrLQgfl6L0_dJawv-LW10EMVesoq1Dx_lO7TtAvcbb0UQzdx4rL-V3F_9wm9iKS4GUQ1FMU7NEqNd1NuF5z955ZoXBHjAFAKOU";
         defualtCfg.method="POST";
         var opt=appUtil.extend({},defualtCfg);
         opt.url=wxaAPI.wxa.getQrCode.url.replace("_ACCESSTOKEN_",accessToken);
         opt.data=req.body;
         opt.data={
-            "path": "pages/home/home?query=1",
+            "path": "pages/test/test",
             "width": 60,
             "scene":123
         };
@@ -66,7 +67,7 @@ function getQrCode(req,res,next){
             method: 'POST',
             url: opt.url,
             body:JSON.stringify(opt.data)
-        }).pipe(writeStream)
+        }).pipe(writeStream);
        loger.info("filePath----->",filePath);
 
         writeStream.on("finish", function() {
@@ -76,7 +77,7 @@ function getQrCode(req,res,next){
             console.log("ok");
             writeStream.end();
         });
-    });
+    //});
 }
 /**
  * 获取accesstoken
