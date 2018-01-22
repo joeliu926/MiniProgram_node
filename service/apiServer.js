@@ -35,7 +35,7 @@ function createposter(req, res, next){
     var options = {
         screenSize: {
             width: 750
-            , height: 1050
+            , height: 'all'
         }
         , shotSize: {
             width: 750
