@@ -10,4 +10,8 @@ router.post('/getcustomer', function(req, res, next) {
 router.post('/update', function(req, res, next) {
     customerServer.update(req, res, next);
 });
+
+router.post('/getcustomerbyunid', function(req, res, next) {  //getcustomerbyunid
+    customerServer.getcustomerbyunid(req, res, next);
+});
 module.exports = router;

@@ -50,6 +50,26 @@ function registor(app) {
         {
             root:"/wx",
             require: '../routes/wx.js'
+        },{
+            root:"/clinic",
+            require: '../routes/clinic.js'
+        }
+        ,{
+            root:"/index",
+            require: '../routes/index.js'
+        }
+        ,{
+            root:"/api",
+            require: '../routes/api.js'
+        } ,{
+            root:"/postercategory",
+            require: '../routes/postercategory.js'
+        } ,{
+            root:"/posterinfo",
+            require: '../routes/posterinfo.js'
+        },{
+            root:"/wxaqr",
+            require: '../routes/wxaqr.js'
         }
     ];
 

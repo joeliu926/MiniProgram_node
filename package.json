@@ -3,24 +3,27 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
     "dev": "node  ./bin/www 8045  http://140.143.185.73 8083",
     "dev_forever": "forever start  ./bin/www 8045  http://140.143.185.73 8083",
-    "test": "node ./bin/www 8045 http://140.143.185.73 8083",
-    "dist": "forever start  ./bin/www 8045  http://140.143.184.52 8082",
+    "sdev": "forever start  ./bin/www 8046 http://140.143.185.73 8083",
+    "test": "forever start  ./bin/www 8045 http://140.143.185.73 8086",
+    "dist": "forever start  ./bin/www 8041 http://140.143.184.52 8082",
     "_comment": "_LOCALPORT_,  _REMOTEURL_, _REMOTEPORT_"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
     "cookie-parser": "^1.4.3",
     "debug": "~2.6.9",
+    "dom-to-image": "^2.6.0",
     "express": "~4.15.5",
     "express-session": "^1.15.6",
     "jade": "^1.11.0",
     "log4js": "^2.4.1",
     "morgan": "^1.9.0",
     "node-rsa": "^0.4.2",
+    "phantom": "^4.0.12",
     "request": "^2.83.0",
-    "serve-favicon": "^2.4.5"
+    "serve-favicon": "^2.4.5",
+    "webshot": "^0.18.0"
   }
 }

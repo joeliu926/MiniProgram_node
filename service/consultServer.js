@@ -222,7 +222,7 @@ function entry(req, res, next){
  * 查询一次分享中，单个客户对某个案例的点赞状态 GET /api/consultation/share-case/like
  */
 function getsharelike(req, res, next){
-    defualtCfg.method="GET";
+    defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
     let customerUnionId = req.body.customerUnionId;//customerUnionId:客户unionId
     let sessionId = req.body.sessionId;//sessionId:会话id
@@ -277,6 +277,29 @@ function interactlist(req, res, next){
     // let consultingId = req.body.consultingId;//consultingId:会话id
     opt.url+=`/getTrack?clueID=${clueID}`;//
     opt.data=req.body;
+        loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            loger.error(error);
+            res.send(error);
+        }
+        else {
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+/**
+ *  客户进入咨询师分享的小程序，查询在之前提交的正 反面照片。 GET /api/consultation/share-case/photo?sessionId={sessionId}&customerUnionid={customerUnionid}
+ */
+
+function getpostphoto(req, res, next){
+    defualtCfg.method="GET";
+    var opt=appUtil.extend({},defualtCfg);
+    let customerUnionid = req.body.customerUnionid;//customerUnionId:客户unionId
+    let sessionId = req.body.sessionId;//sessionId:会话id
+    opt.url+=`/share-case/photo?sessionId=${sessionId}&customerUnionid=${customerUnionid}`;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){
         if(error)
@@ -292,7 +315,6 @@ function interactlist(req, res, next){
 }
 
 
-
 module.exports = {
     addconsultation: addconsultation,
     consultationlist:consultationlist,
@@ -306,4 +328,5 @@ module.exports = {
     getsharelike:getsharelike,
     handelsharecase:handelsharecase,
     interactlist:interactlist,
+    getpostphoto:getpostphoto
 }

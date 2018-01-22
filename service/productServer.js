@@ -1,6 +1,7 @@
 var CONSTANT=require('../config/constant');
 var httpClient=require('../utils/httpClient');
 var appUtil=require('../utils/appUtils');
+var loger=require("./../utils/loger");
 var defualtCfg={
     url:CONSTANT.remoteHost+":"+CONSTANT.remotePort+'/api/product/',
     contentType:'application/json'
@@ -11,8 +12,10 @@ function list(req, res, next){
 
     defualtCfg.method="get";
     var opt=appUtil.extend({},defualtCfg);
-    opt.url+="list?unionid="+req.body.unionId+"&all=0";
-    console.log(opt.url);
+    let all=(req.body.all==0)?"&all="+req.body.all:"";
+    let unionId=req.body.unionId;
+    opt.url+=`list?unionid=${unionId}${all}`;
+    loger.info(opt.url);
     opt.callBack=function(error, response, body){
         if(error)
         {
