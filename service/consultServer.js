@@ -289,7 +289,7 @@ function interactlist(req, res, next){
         }
     };
     httpClient(opt);
-   
+
 }
 /**
  *  客户进入咨询师分享的小程序，查询在之前提交的正 反面照片。 GET /api/consultation/share-case/photo?sessionId={sessionId}&customerUnionid={customerUnionid}
