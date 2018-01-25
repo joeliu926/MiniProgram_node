@@ -266,6 +266,57 @@ function handelsharecase(req, res, next){
     };
     httpClient(opt);
 }
+
+/**
+ *  用户点击喜欢不喜欢  0 不喜欢  1 喜欢
+ */
+function handlelike(req, res, next){
+    defualtCfg.method="POST";
+    var opt=appUtil.extend({},defualtCfg);
+    let customerUnionId = req.body.customerUnionId;//customerUnionId:客户unionId
+    let sessionId = req.body.sessionId;//sessionId:会话id
+    let caseId = req.body.caseId; //caseId:案例id 支持多个案例
+    opt.url+=`/share-caseV3`;
+    opt.data=req.body;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            loger.error(error);
+            res.send(error);
+        }
+        else {
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+
+/**
+ *  获取点击喜欢不喜欢  0 不喜欢  1 喜欢
+ */
+function gethandlelike(req, res, next){
+    defualtCfg.method="POST";
+    var opt=appUtil.extend({},defualtCfg);
+    let customerUnionId = req.body.customerUnionId;//customerUnionId:客户unionId
+    let sessionId = req.body.sessionId;//sessionId:会话id
+    let caseId = req.body.caseId; //caseId:案例id 支持多个案例
+    opt.url+=`/share-case/likeV3`;
+    opt.data=req.body;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            loger.error(error);
+            res.send(error);
+        }
+        else {
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+
 /**
  *  B端小程序 轨迹互动列表获取
  */
@@ -351,6 +402,8 @@ module.exports = {
     entry:entry,
     getsharelike:getsharelike,
     handelsharecase:handelsharecase,
+    handlelike:handlelike,
+    gethandlelike:gethandlelike,
     interactlist:interactlist,
     getpostphoto:getpostphoto,
     getconsultinfo:getconsultinfo

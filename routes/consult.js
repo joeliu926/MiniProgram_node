@@ -65,10 +65,22 @@ router.post('/getsharelike', function(req, res, next) {
     consultServer.getsharelike(req, res, next);
 });
 /**
- *  客户进入咨询师分享的小程序，对某个案例进行点赞操作 或者进行 提交资料给医生操作
+ *  客户进入咨询师分享的小程序，对某个案例进行点赞操作 或者进行 提交资料给医生操作handlelike
  */
 router.post('/handelsharecase', function(req, res, next) {
     consultServer.handelsharecase(req, res, next);
+});
+/**
+ *  用户点击喜欢不喜欢
+ */
+router.post('/handlelike', function(req, res, next) {
+    consultServer.handlelike(req, res, next);
+});
+/**
+ *  获取点击喜欢不喜欢gethandlelike
+ */
+router.post('/gethandlelike', function(req, res, next) {
+    consultServer.gethandlelike(req, res, next);
 });
 /**
  *  b端咨询师用户，进入线索详情 点击互动标签展示 轨迹页面，调用该接口获取，b端咨询师的案例分享轨迹和c端客户的单次会话的关键操作轨迹
