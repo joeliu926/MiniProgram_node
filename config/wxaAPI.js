@@ -23,6 +23,10 @@ var config={
         getQrCode:{
             method:"POST",
             url:`https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=_ACCESSTOKEN_`
+        },
+        sendTemplateMsg:{
+            method:"POST",
+            url:`https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=_ACCESSTOKEN_`
         }
     }
 
