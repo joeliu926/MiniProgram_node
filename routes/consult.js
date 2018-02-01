@@ -103,5 +103,9 @@ router.post('/getconsultinfo', function(req, res, next) {
     consultServer.getconsultinfo(req, res, next);
 });
 
+router.post('/getcluesbyconsultid', function(req, res, next) {
+    consultServer.getcluesbyconsultid(req, res, next);
+});
+
 
 module.exports = router;

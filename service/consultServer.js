@@ -57,7 +57,7 @@ function consultationlist(req, res, next){
  * 获取咨询轨迹
  */
 function trail(req, res, next){
-    defualtCfg.method="get";
+    defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
     opt.url+="/"+req.body.unionId+"/"+req.body.consultingId;//?unionid="+req.body.unionId+"&mobile="+req.body.mobile+"2222";
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
@@ -389,6 +389,29 @@ function getconsultinfo(req, res, next){
     httpClient(opt);
 }
 
+/**
+ * 获取活动目标人群接口  api/consultation/getCluesByConsultId?consultUnionId=oDOgS0qpceu1s3rz3awJ1MAZ7VA8&types=1
+ */
+function getcluesbyconsultid(req, res, next){
+    defualtCfg.method="GET";
+    var opt=appUtil.extend({},defualtCfg);
+    let consultUnionId=req.body.consultUnionId;
+    let types=req.body.types;
+    opt.url+=`/getCluesByConsultId?consultUnionId=${consultUnionId}&types=${types}`;
+    //opt.data=req.body;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            res.send(error);
+        }
+        else {
+            loger.info(JSON.parse(body));
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
 
 module.exports = {
     addconsultation: addconsultation,
@@ -406,5 +429,6 @@ module.exports = {
     gethandlelike:gethandlelike,
     interactlist:interactlist,
     getpostphoto:getpostphoto,
-    getconsultinfo:getconsultinfo
+    getconsultinfo:getconsultinfo,
+    getcluesbyconsultid:getcluesbyconsultid
 }
