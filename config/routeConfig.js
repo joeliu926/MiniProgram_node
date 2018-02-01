@@ -73,6 +73,9 @@ function registor(app) {
         },{
             root:"/wxa",
             require: '../routes/wxa.js'
+        },{
+            root:"/gift",
+            require: '../routes/gift.js'
         }
     ];
 
