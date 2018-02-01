@@ -36,6 +36,35 @@ function pagelist(req, res, next){
     };
     httpClient(opt);
 }
+/**
+ * 获取礼品详情  api/gift/1
+ * @param req
+ * @param res
+ * @param next
+ */
+function giftdetail(req, res, next){
+    defualtCfg.method="GET";
+    var opt=appUtil.extend({},defualtCfg);
+    let id=req.body.id;
+    let pageNo=req.body.pageNo;
+    let pageSize=req.body.pageSize;
+    opt.url+=`/${id}`;
+    //opt.data=req.body;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            loger.error("get detail error-----",opt.url);
+            res.send(error);
+        }
+        else {
+            loger.info("gen detail====>",JSON.parse(body));
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
 module.exports = {
-    pagelist: pagelist
+    pagelist: pagelist,
+    giftdetail:giftdetail
 }
