@@ -70,6 +70,9 @@ function registor(app) {
         },{
             root:"/wxaqr",
             require: '../routes/wxaqr.js'
+        },{
+            root:"/wxa",
+            require: '../routes/wxa.js'
         }
     ];
 
