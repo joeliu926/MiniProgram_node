@@ -20,7 +20,8 @@ function pagelist(req, res, next){
     let userUnionId=req.body.userUnionId;
     let pageNo=req.body.pageNo;
     let pageSize=req.body.pageSize;
-    opt.url+=`/pagelist?userUnionId=${userUnionId}&pageNo=${pageNo}&pageSize=${pageSize}`;
+    let status=req.body.status;
+    opt.url+=`/pagelist?userUnionId=${userUnionId}&status=${status}&pageNo=${pageNo}&pageSize=${pageSize}`;
     //opt.data=req.body;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){
