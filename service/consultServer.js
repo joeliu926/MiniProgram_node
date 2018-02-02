@@ -413,6 +413,30 @@ function getcluesbyconsultid(req, res, next){
     httpClient(opt);
 }
 
+/**
+ * 保存活动目标人群接口  api/consultation/addConsultRecord?consultUnionId=oDOgS0qpceu1s3rz3awJ1MAZ7VA8&types=1
+ */
+function addconsultrecord(req, res, next){
+    defualtCfg.method="GET";
+    var opt=appUtil.extend({},defualtCfg);
+    let consultUnionId=req.body.consultUnionId;
+    let types=req.body.types;
+    opt.url+=`/addConsultRecord?consultUnionId=${consultUnionId}&types=${types}`;
+    //opt.data=req.body;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            res.send(error);
+        }
+        else {
+            loger.info(JSON.parse(body));
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+
 module.exports = {
     addconsultation: addconsultation,
     consultationlist:consultationlist,
@@ -430,5 +454,6 @@ module.exports = {
     interactlist:interactlist,
     getpostphoto:getpostphoto,
     getconsultinfo:getconsultinfo,
-    getcluesbyconsultid:getcluesbyconsultid
+    getcluesbyconsultid:getcluesbyconsultid,
+    addconsultrecord:addconsultrecord
 }
