@@ -148,6 +148,34 @@ function getalreadyappointmentnum(req, res, next){
     httpClient(opt);
 }
 
+/**
+ * 气泡   get /api/activityrecord/getBubblePrompt
+ * @param req
+ * @param res
+ * @param next
+ */
+function getbubbleprompt(req, res, next){
+    defualtCfg.method="GET";
+    var opt=appUtil.extend({},defualtCfg);
+    let consultUnId=req.body.consultUnId;
+    let sessionId=req.body.sessionId;
+    opt.url+=`/getBubblePrompt?sessionId=${sessionId}&consultUnId=${consultUnId}`;
+    //opt.data=req.body;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            loger.error("get getBubblePrompt error-----",opt.url);
+            res.send(error);
+        }
+        else {
+            loger.info(" getBubblePrompt====>",JSON.parse(body));
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+
 
 
 module.exports = {
@@ -155,5 +183,6 @@ module.exports = {
     getnum:getnum,
     pagelist:pagelist,
     getdetail:getdetail,
-    getalreadyappointmentnum:getalreadyappointmentnum
+    getalreadyappointmentnum:getalreadyappointmentnum,
+    getbubbleprompt:getbubbleprompt
 }

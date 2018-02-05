@@ -16,7 +16,10 @@ router.post('/getdetail', function(req, res, next) {
     activityrecordServer.getdetail(req, res, next);
 });
 router.post('/getalreadyappointmentnum', function(req, res, next) {
-    activityrecordServer.getalreadyappointmentnum(req, res, next);
+    activityrecordServer.getalreadyappointmentnum(req, res, next); //
+});
+router.post('/getbubbleprompt', function(req, res, next) {
+    activityrecordServer.getbubbleprompt(req, res, next); //
 });
 
 module.exports = router;
