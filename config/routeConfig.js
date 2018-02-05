@@ -76,6 +76,9 @@ function registor(app) {
         },{
             root:"/gift",
             require: '../routes/gift.js'
+        },{
+            root:"/activityrecord",
+            require: '../routes/activityrecord.js'
         }
     ];
 
