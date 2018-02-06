@@ -421,7 +421,9 @@ function addconsultrecord(req, res, next){
     var opt=appUtil.extend({},defualtCfg);
     let consultUnionId=req.body.consultUnionId;
     let types=req.body.types;
-    opt.url+=`/addConsultRecord?consultUnionId=${consultUnionId}&types=${types}`;
+    let sessionId=req.body.sessionId;
+    let giftId=req.body.giftId;
+    opt.url+=`/addConsultRecord?consultUnionId=${consultUnionId}&types=${types}&sessionId=${sessionId}&giftId=${giftId}`;
     //opt.data=req.body;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){
@@ -436,6 +438,35 @@ function addconsultrecord(req, res, next){
     };
     httpClient(opt);
 }
+
+/**
+ * 获取收礼客户   GET /api/consultation/getRecordNum
+ * @param req
+ * @param res
+ * @param next
+ */
+function getrecordnum(req, res, next){
+    defualtCfg.method="GET";
+    var opt=appUtil.extend({},defualtCfg);
+    let consultUnId=req.body.consultUnId;
+    let sessionId=req.body.sessionId;
+    opt.url+=`/getRecordNum?sessionId=${sessionId}&consultUnId=${consultUnId}`;
+    //opt.data=req.body;
+    loger.info(opt.url);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            loger.error("get getRecordNum error-----",opt.url);
+            res.send(error);
+        }
+        else {
+            loger.info(" getRecordNum====>",JSON.parse(body));
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+
 
 module.exports = {
     addconsultation: addconsultation,
@@ -455,5 +486,6 @@ module.exports = {
     getpostphoto:getpostphoto,
     getconsultinfo:getconsultinfo,
     getcluesbyconsultid:getcluesbyconsultid,
-    addconsultrecord:addconsultrecord
+    addconsultrecord:addconsultrecord,
+    getrecordnum:getrecordnum
 }

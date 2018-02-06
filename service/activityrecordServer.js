@@ -74,7 +74,9 @@ function pagelist(req, res, next){
     let consultUnId=req.body.consultUnId;
     let type=req.body.type;
     let sessionId=req.body.sessionId;
-    opt.url+=`/pagelist?sessionId=${sessionId}&consultUnId=${consultUnId}&type=${type}`;
+    let pageNo=req.body.pageNo;
+    let pageSize=req.body.pageSize;
+    opt.url+=`/pagelist?sessionId=${sessionId}&consultUnId=${consultUnId}&type=${type}&pageNo=${pageNo}&pageSize=${pageSize}`;
     //opt.data=req.body;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){

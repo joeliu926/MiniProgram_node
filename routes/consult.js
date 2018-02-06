@@ -109,5 +109,8 @@ router.post('/getcluesbyconsultid', function(req, res, next) {
 router.post('/addconsultrecord', function(req, res, next) {
     consultServer.addconsultrecord(req, res, next);
 });
+router.post('/getrecordnum', function(req, res, next) {
+    consultServer.getrecordnum(req, res, next);
+});
 
 module.exports = router;
