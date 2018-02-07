@@ -9,6 +9,7 @@ var defualtCfg={
 function cluelist(req, res, next){
     defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+=`pageList?userUnionId=${req.body.userUnionId}&group=${req.body.group}&searchName=${encodeURI(req.body.searchName)}&pageNo=${req.body.pageNo}&pageSize=${req.body.pageSize}`;
     opt.callBack=function(error, response, body){
         if(error)
@@ -31,6 +32,7 @@ function cluelist(req, res, next){
 function cluedetail(req, res, next){
     defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+=`clueDetail/${req.body.id}`;
     opt.callBack=function(error, response, body){
         if(error)
@@ -48,6 +50,7 @@ function cluedetail(req, res, next){
 function sharelist(req, res, next){
     defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/consultation?consultantUnionid=${req.body.consultantUnionid}&pageNo=${req.body.pageNo}&pageSize=${req.body.pageSize}`;
     console.log(opt.url);
     opt.callBack=function(error, response, body){

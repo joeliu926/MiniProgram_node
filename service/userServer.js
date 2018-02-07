@@ -8,14 +8,11 @@ var defualtCfg={
 };
 
 function userinfo(req, res, next){
-
-    console.log(req.body);
-    //defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+="/wx/"+req.body.unionid;
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
    // opt.data=req.body;
-    console.log(opt.url);
     opt.callBack=function(error, response, body){
         if(error)
         {

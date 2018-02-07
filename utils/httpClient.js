@@ -24,7 +24,8 @@ var requestType={
             method:arg.method, //"POST",
             //json: true,
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                "v":arg.v||''
             },
             body:JSON.stringify(arg.data)
         }, function(error, response, body) {
@@ -46,7 +47,9 @@ module.exports = function(arg){
     }else{
         var params=querystring.stringify(arg.data);
         arg.url+=/\?+/.test(arg.url)?'&'+params:'?'+params;
-        request({url:arg.url}, function (error, response, body) {
+        request({url:arg.url,headers: {
+            "v":arg.v||''
+        }}, function (error, response, body) {
             util.isFunction(arg.callBack)&&arg.callBack(error, response, body);
         })
     }
