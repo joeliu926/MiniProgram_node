@@ -113,4 +113,8 @@ router.post('/getrecordnum', function(req, res, next) {
     consultServer.getrecordnum(req, res, next);
 });
 
+router.post('/getprompt', function(req, res, next) {
+    consultServer.getprompt(req, res, next);
+});
+
 module.exports = router;
