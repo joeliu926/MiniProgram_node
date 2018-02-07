@@ -441,7 +441,7 @@ function addconsultrecord(req, res, next){
     let sessionId=req.body.sessionId;
     let giftId=req.body.giftId;
     opt.v = req.headers['v'];
-    opt.url+=`/addConsultRecord?consultUnionId=${consultUnionId}&types=${types}&sessionId=${sessionId}&giftId=${giftId}`;
+    opt.url+=`/addConsultRecord?consultUnId=${consultUnionId}&types=${types}&sessionId=${sessionId}&giftId=${giftId}`;
     //opt.data=req.body;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){
