@@ -13,7 +13,7 @@ function list(req, res, next){
     var opt=appUtil.extend({},defualtCfg);
     //opt.url+="list/"+req.body.unionId;
     opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCodes="+req.body.productCodes;
-
+    opt.v = req.headers['v'];
     console.log(opt.url);
     opt.callBack=function(error, response, body){
         if(error)
@@ -40,7 +40,7 @@ function morelist(req, res, next){
      opt.data=req.body;
     //opt.url+="list/"+req.body.unionId;"&caseIds="+req.body.caseIds+
     opt.url+="listByProducts";
-
+    opt.v = req.headers['v'];
     console.log(opt.url);
     opt.callBack=function(error, response, body){
         if(error)
@@ -63,7 +63,7 @@ function detail(req,res,next){
     defualtCfg.method="get";
     var opt=appUtil.extend({},defualtCfg);
     opt.url+=req.body.did;
-
+    opt.v = req.headers['v'];
     console.log(opt.url);
     opt.callBack=function(error, response, body){
         if(error)

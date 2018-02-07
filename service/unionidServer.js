@@ -21,6 +21,7 @@ function code(req, res, next){
     //console.log("小程序code------->",code);
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url=wxConfig.authorize.authorizecode.url.replace("_CODE_",code);
     loger.info("get auth code url 11111------->",opt.url);
     opt.callBack=function(error, response, body){

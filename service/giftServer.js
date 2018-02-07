@@ -21,6 +21,7 @@ function pagelist(req, res, next){
     let pageNo=req.body.pageNo;
     let pageSize=req.body.pageSize;
     let status=req.body.status;
+    opt.v = req.headers['v'];
     opt.url+=`/pagelist?userUnionId=${userUnionId}&status=${status}&pageNo=${pageNo}&pageSize=${pageSize}`;
     //opt.data=req.body;
     loger.info(opt.url);
@@ -49,6 +50,7 @@ function giftdetail(req, res, next){
     let id=req.body.id;
     let pageNo=req.body.pageNo;
     let pageSize=req.body.pageSize;
+    opt.v = req.headers['v'];
     opt.url+=`/${id}`;
     //opt.data=req.body;
     loger.info(opt.url);

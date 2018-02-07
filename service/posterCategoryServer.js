@@ -18,6 +18,7 @@ function addorupdate(req, res, next){
     defualtCfg.method="PUT";
     var opt=appUtil.extend({},defualtCfg);
     //opt.authorization =sessionAgent.getUserToken(req);
+    opt.v = req.headers['v'];
     opt.url+=``;
     //req.body.loginName=sessionAgent.getUserId(req);
     opt.data=req.body;
@@ -45,6 +46,7 @@ function list(req, res, next){
     var opt=appUtil.extend({},defualtCfg);
     //opt.authorization =sessionAgent.getUserToken(req);
     let userUnionId=req.body.userUnionId;
+    opt.v = req.headers['v'];
     opt.url+=`/list?userUnionId=${userUnionId}`;
 
    // opt.data=req.body;
@@ -71,6 +73,7 @@ function addposter(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
     //opt.authorization =sessionAgent.getUserToken(req);
+    opt.v = req.headers['v'];
     opt.url+=``;
     //req.body.loginName=sessionAgent.getUserId(req);
     opt.data=req.body;

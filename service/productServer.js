@@ -14,6 +14,7 @@ function list(req, res, next){
     var opt=appUtil.extend({},defualtCfg);
     let all=(req.body.all==0)?"&all="+req.body.all:"";
     let unionId=req.body.unionId;
+    opt.v = req.headers['v'];
     opt.url+=`list?unionid=${unionId}${all}`;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){

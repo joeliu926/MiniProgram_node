@@ -17,6 +17,7 @@ var defualtCfg={
 function create(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+=`/create`;
     opt.data=req.body;
     loger.info(opt.url);
@@ -45,6 +46,7 @@ function getnum(req, res, next){
     let id=req.body.id;
     let sessionId=req.body.sessionId;
     let consultUnId=req.body.consultUnId;
+    opt.v = req.headers['v'];
     opt.url+=`/getNum?sessionId=${sessionId}&consultUnId=${consultUnId}`;
     //opt.data=req.body;
     loger.info(opt.url);
@@ -77,6 +79,7 @@ function pagelist(req, res, next){
     let pageNo=req.body.pageNo;
     let pageSize=req.body.pageSize;
     opt.url+=`/pagelist?sessionId=${sessionId}&consultUnId=${consultUnId}&type=${type}&pageNo=${pageNo}&pageSize=${pageSize}`;
+    opt.v = req.headers['v'];
     //opt.data=req.body;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){
@@ -107,6 +110,7 @@ function getdetail(req, res, next){
     let consultUnId=req.body.consultUnId;
     let sessionId=req.body.sessionId;
     opt.url+=`/getDetail/${sessionId}/${customerUnId}/${consultUnId}`;
+    opt.v = req.headers['v'];
     //opt.data=req.body;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){
@@ -134,6 +138,7 @@ function getalreadyappointmentnum(req, res, next){
     let consultUnId=req.body.consultUnId;
     let sessionId=req.body.sessionId;
     opt.url+=`/getAlreadyAppointmentNum?sessionId=${sessionId}&consultUnId=${consultUnId}`;
+    opt.v = req.headers['v'];
     //opt.data=req.body;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){
@@ -162,6 +167,7 @@ function getbubbleprompt(req, res, next){
     let consultUnId=req.body.consultUnId;
     let sessionId=req.body.sessionId;
     opt.url+=`/getBubblePrompt?sessionId=${sessionId}&consultUnId=${consultUnId}`;
+    opt.v = req.headers['v'];
     //opt.data=req.body;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){

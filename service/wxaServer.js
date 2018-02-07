@@ -18,6 +18,7 @@ function formid(req, res, next){
         defualtCfg.method="POST";
         var opt=appUtil.extend({},defualtCfg);
         opt.url+=`/formid`;
+        opt.v = req.headers['v'];
         opt.data=req.body;
         loger.info(opt.url);
         opt.callBack=function(error, response, body){

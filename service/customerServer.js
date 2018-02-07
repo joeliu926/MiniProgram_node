@@ -15,6 +15,7 @@ var defualtCfg={
 function addcustomer(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+="/addCustomer";
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     opt.data=req.body;
@@ -42,6 +43,7 @@ function addcustomer(req, res, next){
 function getcustomer(req, res, next){
     defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+="/"+req.body.customerId;
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     //opt.data=req.body;
@@ -69,6 +71,7 @@ function getcustomer(req, res, next){
 function update(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+="/update";
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     opt.data=req.body;
@@ -98,6 +101,7 @@ function getcustomerbyunid(req, res, next){
     var opt=appUtil.extend({},defualtCfg);
     let consultantUnionid=req.body.consultantUnionid;
     let unionid=req.body.unionid;
+    opt.v = req.headers['v'];
     opt.url+=`?consultantUnionid=${consultantUnionid}&unionid=${unionid}`;
     //opt.data=req.body;
     loger.info(opt.url);

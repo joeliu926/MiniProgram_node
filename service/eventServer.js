@@ -15,6 +15,7 @@ function addevent(req, res, next){
 
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+="";
    // opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     opt.data=req.body;
@@ -44,6 +45,7 @@ function vtwoevent(req, res, next){
 
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+="/v2";
     // opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     opt.data=req.body;

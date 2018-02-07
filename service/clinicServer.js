@@ -24,6 +24,7 @@ function detail(req, res, next){
     opt.url+=`/getClinicByUnionId/${unionId}`;
     // opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     opt.data=req.body;
+    opt.v = req.headers['v'];
     console.log(opt.url);
     opt.callBack=function(error, response, body){
         if(error)

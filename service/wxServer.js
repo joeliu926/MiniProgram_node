@@ -49,6 +49,7 @@ function getQrCode(req,res,next){
         defualtCfg.method="POST";
         var opt=appUtil.extend({},defualtCfg);
         opt.url=wxaAPI.wxa.getQrCode.url.replace("_ACCESSTOKEN_",accessToken);
+        opt.v = req.headers['v'];
         opt.data=req.body;
         opt.data={
             "path": "pages/test/test",

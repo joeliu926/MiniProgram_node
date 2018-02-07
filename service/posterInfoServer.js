@@ -19,6 +19,7 @@ function addposter(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
     //opt.authorization =sessionAgent.getUserToken(req);
+    opt.v = req.headers['v'];
     opt.url+=``;
     //req.body.loginName=sessionAgent.getUserId(req);
     opt.data=req.body;
@@ -49,6 +50,7 @@ function pagelist(req, res, next){
     let categoryId=req.body.categoryId;
     let pageNo=req.body.pageNo;
     let pageSize=req.body.pageSize;
+    opt.v = req.headers['v'];
     opt.url+=`/pagelist?userUnionId=${userUnionId}&categoryId=${categoryId}&pageNo=${pageNo}&pageSize=${pageSize}`;
 
    // opt.data=req.body;
@@ -76,6 +78,7 @@ function posterdel(req, res, next){
     defualtCfg.method="DELETE";
     var opt=appUtil.extend({},defualtCfg);
    // opt.authorization =sessionAgent.getUserToken(req);
+    opt.v = req.headers['v'];
     opt.url+=``;
     opt.data=req.body;
     loger.info("posterInfo---delete======>",opt.url);

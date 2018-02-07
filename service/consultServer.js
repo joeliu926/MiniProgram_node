@@ -12,6 +12,7 @@ var defualtCfg={
 function addconsultation(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+="";
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     opt.data=req.body;
@@ -35,6 +36,7 @@ function addconsultation(req, res, next){
 function consultationlist(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+="/list?pageSize="+req.body.pageSize;//?unionid="+req.body.unionId+"&mobile="+req.body.mobile+"2222";
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     opt.data=req.body;
@@ -59,6 +61,7 @@ function consultationlist(req, res, next){
 function trail(req, res, next){
     defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+="/"+req.body.unionId+"/"+req.body.consultingId;//?unionid="+req.body.unionId+"&mobile="+req.body.mobile+"2222";
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     //opt.data=req.body;
@@ -82,6 +85,7 @@ function trail(req, res, next){
 function singletrail(req, res, next){
     defualtCfg.method="get";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
    // opt.url+="/"+req.body.unionId+"/"+req.body.consultingId;//?unionid="+req.body.unionId+"&mobile="+req.body.mobile+"2222";
     opt.url+="/track?unionId="+req.body.unionId+"&consultingId="+req.body.consultingId;
     console.log(opt.url);
@@ -104,6 +108,7 @@ function singletrail(req, res, next){
 function consultitems(req, res, next){
     defualtCfg.method="get";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     //opt.url+="/"+req.body.id+"/product/"+req.body.customerUnionId;
     opt.url+="/product?sessionId="+req.body.id+"&customerUnionid="+req.body.customerUnionId;
     console.log(opt.url);
@@ -134,6 +139,7 @@ function consultcustomers(req, res, next){
     let pageNo = req.body.pageNo;
     let pageSize= req.body.pageSize;
     opt.url+=`/${id}/customers/list?wxNickname=${wxNickname}&fieldValue=${fieldValue}&pageNo=${pageNo}&pageSize=${pageSize}`;
+    opt.v = req.headers['v'];
     console.log(opt.url);
     opt.callBack=function(error, response, body){
         if(error)
@@ -155,6 +161,7 @@ function sharecase(req, res, next){
     defualtCfg.method="get";
     var opt=appUtil.extend({},defualtCfg);
     let sessionId = req.body.sessionId;
+    opt.v = req.headers['v'];
     opt.url+=`/share-case?sessionId=${sessionId}`;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){
@@ -179,6 +186,7 @@ function consultantupdate(req, res, next){
     let consultingId = req.body.consultingId;
     let cases = req.body.cases;
     let products = req.body.products;
+    opt.v = req.headers['v'];
     opt.url+=``;
     opt.data=req.body;
     loger.info(opt.url);
@@ -201,6 +209,7 @@ function consultantupdate(req, res, next){
 function entry(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+=`/entry`;
     opt.data=req.body;
     loger.info(opt.url);
@@ -227,6 +236,7 @@ function getsharelike(req, res, next){
     let customerUnionId = req.body.customerUnionId;//customerUnionId:客户unionId
     let sessionId = req.body.sessionId;//sessionId:会话id
     let caseId = req.body.caseId; //caseId:案例id 支持多个案例
+    opt.v = req.headers['v'];
     opt.url+=`/share-case/like`;
     opt.data=req.body;
     loger.info(opt.url);
@@ -251,6 +261,7 @@ function handelsharecase(req, res, next){
     let customerUnionId = req.body.customerUnionId;//customerUnionId:客户unionId
     let sessionId = req.body.sessionId;//sessionId:会话id
     let caseId = req.body.caseId; //caseId:案例id 支持多个案例
+    opt.v = req.headers['v'];
     opt.url+=`/share-case`;
     opt.data=req.body;
     loger.info(opt.url);
@@ -276,6 +287,7 @@ function handlelike(req, res, next){
     let customerUnionId = req.body.customerUnionId;//customerUnionId:客户unionId
     let sessionId = req.body.sessionId;//sessionId:会话id
     let caseId = req.body.caseId; //caseId:案例id 支持多个案例
+    opt.v = req.headers['v'];
     opt.url+=`/share-caseV3`;
     opt.data=req.body;
     loger.info(opt.url);
@@ -301,6 +313,7 @@ function gethandlelike(req, res, next){
     let customerUnionId = req.body.customerUnionId;//customerUnionId:客户unionId
     let sessionId = req.body.sessionId;//sessionId:会话id
     let caseId = req.body.caseId; //caseId:案例id 支持多个案例
+    opt.v = req.headers['v'];
     opt.url+=`/share-case/likeV3`;
     opt.data=req.body;
     loger.info(opt.url);
@@ -326,6 +339,7 @@ function interactlist(req, res, next){
     let clueID=req.body.clueId;  //线索id  
     // let unionId = req.body.unionId;//unionId:客户unionId
     // let consultingId = req.body.consultingId;//consultingId:会话id
+    opt.v = req.headers['v'];
     opt.url+=`/getTrack?clueID=${clueID}`;//
     opt.data=req.body;
         loger.info(opt.url);
@@ -351,6 +365,7 @@ function getpostphoto(req, res, next){
     var opt=appUtil.extend({},defualtCfg);
     let customerUnionid = req.body.customerUnionid;//customerUnionId:客户unionId
     let sessionId = req.body.sessionId;//sessionId:会话id
+    opt.v = req.headers['v'];
     opt.url+=`/share-case/photo?sessionId=${sessionId}&customerUnionid=${customerUnionid}`;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){
@@ -374,6 +389,7 @@ function getconsultinfo(req, res, next){
     var opt=appUtil.extend({},defualtCfg);
     //opt.url+="/"+req.body.id+"/product/"+req.body.customerUnionId;
     let sessionId=req.body.sessionId;
+    opt.v = req.headers['v'];
     opt.url+=`/getConsultInfo/${sessionId}`;
     loger.info(opt.url);
     opt.callBack=function(error, response, body){
@@ -397,6 +413,7 @@ function getcluesbyconsultid(req, res, next){
     var opt=appUtil.extend({},defualtCfg);
     let consultUnionId=req.body.consultUnionId;
     let types=req.body.types;
+    opt.v = req.headers['v'];
     opt.url+=`/getCluesByConsultId?consultUnionId=${consultUnionId}&types=${types}`;
     //opt.data=req.body;
     loger.info(opt.url);
@@ -423,6 +440,7 @@ function addconsultrecord(req, res, next){
     let types=req.body.types;
     let sessionId=req.body.sessionId;
     let giftId=req.body.giftId;
+    opt.v = req.headers['v'];
     opt.url+=`/addConsultRecord?consultUnionId=${consultUnionId}&types=${types}&sessionId=${sessionId}&giftId=${giftId}`;
     //opt.data=req.body;
     loger.info(opt.url);
@@ -450,6 +468,7 @@ function getrecordnum(req, res, next){
     var opt=appUtil.extend({},defualtCfg);
     let consultUnId=req.body.consultUnId;
     let sessionId=req.body.sessionId;
+    opt.v = req.headers['v'];
     opt.url+=`/getRecordNum?sessionId=${sessionId}&consultUnId=${consultUnId}`;
     //opt.data=req.body;
     loger.info(opt.url);

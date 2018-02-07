@@ -11,6 +11,8 @@ function cluelist(req, res, next){
     var opt=appUtil.extend({},defualtCfg);
     opt.v = req.headers['v'];
     opt.url+=`pageList?userUnionId=${req.body.userUnionId}&group=${req.body.group}&searchName=${encodeURI(req.body.searchName)}&pageNo=${req.body.pageNo}&pageSize=${req.body.pageSize}`;
+
+    console.log('cluelist.opt',opt);
     opt.callBack=function(error, response, body){
         if(error)
         {
@@ -68,6 +70,7 @@ function sharelist(req, res, next){
 function clueremark(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/clueRemarks/create`;
     opt.data=req.body;
     opt.callBack=function(error, response, body){
@@ -85,6 +88,7 @@ function clueremark(req, res, next){
 function clueclose(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url+=`closeClue/${req.body.id}`;
     opt.callBack=function(error, response, body){
         if(error)
@@ -103,6 +107,7 @@ function clueclose(req, res, next){
 function linkmanupdate(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/customer/update`;
     opt.data=req.body;
     opt.callBack=function(error, response, body){
@@ -121,6 +126,7 @@ function linkmanupdate(req, res, next){
 function linkman(req, res, next){
     defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/customer/${req.body.id}`;
     opt.callBack=function(error, response, body){
         if(error)
@@ -140,6 +146,7 @@ function linkman(req, res, next){
 function remarklist(req, res, next){
     defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
     opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/clueRemarks/pagelist?clueId=${req.body.clueId}`;
     opt.callBack=function(error, response, body){
         if(error)

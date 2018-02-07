@@ -13,6 +13,7 @@ function list(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
     opt.url+="/list";
+    opt.v = req.headers['v'];
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     opt.data=req.body;
     console.log(opt.url);
@@ -36,6 +37,7 @@ function detail(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
     opt.url+="/get";
+    opt.v = req.headers['v'];
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     opt.data=req.body;
     console.log(opt.url);
@@ -59,6 +61,7 @@ function send(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
     opt.url+="/sendAppointment";
+    opt.v = req.headers['v'];
     //opt.url+="list?unionid="+req.body.unionId+"&caseIds="+req.body.caseIds+"&productCode="+req.body.productCode;
     opt.data=req.body;
     console.log(opt.url);

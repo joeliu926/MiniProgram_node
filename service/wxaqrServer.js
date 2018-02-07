@@ -23,6 +23,7 @@ function genwxaqrcode(req, res, next){
         var opt=appUtil.extend({},defualtCfg);
         let sessionId=req.body.sessionId;
         let customerId=req.body.customerId;
+        opt.v = req.headers['v'];
         opt.url+=`/genwxaqrcode`;
         let postData={
             wxaqrData:req.body,
