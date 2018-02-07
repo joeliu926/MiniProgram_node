@@ -21,7 +21,7 @@ function pagelist(req, res, next){
     let pageNo=req.body.pageNo;
     let pageSize=req.body.pageSize;
     let status=req.body.status;
-    let dateFilter=req.body.dateFilter;
+    let dateFilter=req.body.dateFilter||0;
     opt.v = req.headers['v'];
     opt.url+=`/pagelist?userUnionId=${userUnionId}&status=${status}&dateFilter=${dateFilter}&pageNo=${pageNo}&pageSize=${pageSize}`;
     //opt.data=req.body;
