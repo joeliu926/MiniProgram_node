@@ -27,6 +27,10 @@ var config={
         sendTemplateMsg:{
             method:"POST",
             url:`https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=_ACCESSTOKEN_`
+        },
+        getProductToken:{
+            method:"POST",
+            url: `${wxConfig.route}/wxa/wx/accesstoken`
         }
     }
 
