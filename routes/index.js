@@ -33,4 +33,8 @@ router.post('/linkman', function(req, res, next) {
     indexServer.linkman(req, res, next);
 });
 
+router.post('/waitflow', function(req, res, next) {
+    indexServer.waitflow(req, res, next);
+});
+
 module.exports = router;

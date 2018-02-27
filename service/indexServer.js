@@ -83,7 +83,7 @@ function clueremark(req, res, next){
         }
     };
     httpClient(opt);
-
+    operation(req.body.clueId,req.headers['v']);
 }
 function clueclose(req, res, next){
     defualtCfg.method="POST";
@@ -100,7 +100,7 @@ function clueclose(req, res, next){
         }
     };
     httpClient(opt);
-
+    operation(req.body.clueId,req.headers['v']);
 }
 
 
@@ -120,7 +120,7 @@ function linkmanupdate(req, res, next){
         }
     };
     httpClient(opt);
-
+    operation(req.body.clueId,req.headers['v']);
 }
 
 function linkman(req, res, next){
@@ -162,6 +162,35 @@ function remarklist(req, res, next){
 
 }
 
+function waitflow(req, res, next){
+    defualtCfg.method="POST";
+    var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/clue/waitFlow/${req.body.clueId}`;
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            res.send(error);
+        }
+        else {
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+    operation(req.body.clueId,req.headers['v']);
+}
+
+//操作去除小红点
+function operation(clueId,v){
+    defualtCfg.method="POST";
+    var opt=appUtil.extend({},defualtCfg);
+    opt.v = v;
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/clue/operation/${clueId}`;
+    opt.callBack=function(error, response, body){
+    };
+    httpClient(opt);
+}
+
 
 module.exports = {
     cluelist: cluelist,
@@ -171,5 +200,7 @@ module.exports = {
     clueclose: clueclose,
     linkmanupdate:linkmanupdate,
     linkman:linkman,
-    remarklist:remarklist
+    remarklist:remarklist,
+    waitflow:waitflow,
+    operation:operation
 }
