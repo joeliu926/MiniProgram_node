@@ -47,7 +47,7 @@ function taglist(req, res, next){
     defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
     opt.v = req.headers['v'];
-    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/tagInfo/pagelist?userUnionid=${req.body.userUnionid}&name=${encodeURI(req.body.name)}&pageNo=${req.body.pageNo}&pageSize=${req.body.pageSize}`;
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/tagInfo/pagelist?userUnionId=${req.body.userUnionId}&name=${encodeURI(req.body.name)}&pageNo=${req.body.pageNo}&pageSize=${req.body.pageSize}`;
     opt.callBack=function(error, response, body){
         if(error)
         {
@@ -83,7 +83,7 @@ function list(req, res, next){
     defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
     opt.v = req.headers['v'];
-    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/mediaBase/pagelist?unionId=${req.body.unionId}`;
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/mediaBase/pagelist?unionId=${req.body.unionId}&customerName=${encodeURI(req.body.customerName)}&pageNo=${req.body.pageNo}&pageSize=${req.body.pageSize}`;
     opt.callBack=function(error, response, body){
         if(error)
         {
