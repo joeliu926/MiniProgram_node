@@ -6,11 +6,12 @@ var defualtCfg={
     contentType:'application/json'
 };
 
-function cluelist(req, res, next){
+
+function customerlist(req, res, next){
     defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
     opt.v = req.headers['v'];
-    opt.url+=`pageList?userUnionId=${req.body.userUnionId}&group=${req.body.group}&searchName=${encodeURI(req.body.searchName)}&pageNo=${req.body.pageNo}&pageSize=${req.body.pageSize}`;
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/customer/customerPageList?userUnionid=${req.body.userUnionid}&fieldValue=${encodeURI(req.body.fieldValue)}&pageNo=${req.body.pageNo}&pageSize=${req.body.pageSize}`;
     opt.callBack=function(error, response, body){
         if(error)
         {
@@ -21,55 +22,14 @@ function cluelist(req, res, next){
         }
     };
     httpClient(opt);
+
 }
 
-/**
- * 获取线索详情 /api/clue/get
- * @param req
- * @param res
- * @param next
- */
-function cluedetail(req, res, next){
-    defualtCfg.method="GET";
-    var opt=appUtil.extend({},defualtCfg);
-    opt.v = req.headers['v'];
-    opt.url+=`clueDetail/${req.body.id}`;
-    opt.callBack=function(error, response, body){
-        if(error)
-        {
-            res.send(error);
-        }
-        else {
-            res.send(JSON.parse(body));
-        }
-    };
-    httpClient(opt);
-}
-
-
-function sharelist(req, res, next){
-    defualtCfg.method="GET";
-    var opt=appUtil.extend({},defualtCfg);
-    opt.v = req.headers['v'];
-    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/consultation?consultantUnionid=${req.body.consultantUnionid}&pageNo=${req.body.pageNo}&pageSize=${req.body.pageSize}`;
-    console.log(opt.url);
-    opt.callBack=function(error, response, body){
-        if(error)
-        {
-            res.send(error);
-        }
-        else {
-            res.send(JSON.parse(body));
-        }
-    };
-    httpClient(opt);
-}
-
-function clueremark(req, res, next){
+function createcustomer(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
     opt.v = req.headers['v'];
-    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/clueRemarks/create`;
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/customer/newCustomer`;
     opt.data=req.body;
     opt.callBack=function(error, response, body){
         if(error)
@@ -81,13 +41,13 @@ function clueremark(req, res, next){
         }
     };
     httpClient(opt);
-    operation(req.body.clueId,req.headers['v']);
 }
-function clueclose(req, res, next){
-    defualtCfg.method="POST";
+
+function taglist(req, res, next){
+    defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
     opt.v = req.headers['v'];
-    opt.url+=`closeClue/${req.body.id}`;
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/tagInfo/pagelist?userUnionid=${req.body.userUnionid}&name=${encodeURI(req.body.name)}&pageNo=${req.body.pageNo}&pageSize=${req.body.pageSize}`;
     opt.callBack=function(error, response, body){
         if(error)
         {
@@ -98,15 +58,14 @@ function clueclose(req, res, next){
         }
     };
     httpClient(opt);
-    operation(req.body.clueId,req.headers['v']);
 }
 
 
-function linkmanupdate(req, res, next){
+function createtag(req, res, next){
     defualtCfg.method="POST";
     var opt=appUtil.extend({},defualtCfg);
     opt.v = req.headers['v'];
-    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/customer/update`;
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/tagInfo`;
     opt.data=req.body;
     opt.callBack=function(error, response, body){
         if(error)
@@ -118,53 +77,87 @@ function linkmanupdate(req, res, next){
         }
     };
     httpClient(opt);
-    operation(req.body.clueId,req.headers['v']);
 }
 
-function linkman(req, res, next){
+function list(req, res, next){
     defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
     opt.v = req.headers['v'];
-    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/customer/${req.body.id}`;
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/mediaBase/pagelist?unionId=${req.body.unionId}`;
     opt.callBack=function(error, response, body){
         if(error)
         {
             res.send(error);
         }
         else {
-            console.log("get clue detail====>",JSON.parse(body));
             res.send(JSON.parse(body));
         }
     };
     httpClient(opt);
-
 }
 
 
-function remarklist(req, res, next){
+function create(req, res, next){
+    defualtCfg.method="POST";
+    var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/mediaBase/create`;
+    opt.data=JSON.parse(req.body.postobj);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            res.send(error);
+        }
+        else {
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+
+
+function recreate(req, res, next){
+    defualtCfg.method="POST";
+    var opt=appUtil.extend({},defualtCfg);
+    opt.v = req.headers['v'];
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/mediaBase/resubMission`;
+    opt.data=JSON.parse(req.body.postobj);
+    opt.callBack=function(error, response, body){
+        if(error)
+        {
+            res.send(error);
+        }
+        else {
+            res.send(JSON.parse(body));
+        }
+    };
+    httpClient(opt);
+}
+
+
+
+function detail(req, res, next){
     defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
     opt.v = req.headers['v'];
-    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/clueRemarks/pagelist?clueId=${req.body.clueId}`;
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/mediaBase/get/${req.body.id}`;
     opt.callBack=function(error, response, body){
         if(error)
         {
             res.send(error);
         }
         else {
-            console.log("get clue detail====>",JSON.parse(body));
             res.send(JSON.parse(body));
         }
     };
     httpClient(opt);
-
 }
 
-function waitflow(req, res, next){
-    defualtCfg.method="POST";
+function getthubm(req, res, next){
+    defualtCfg.method="GET";
     var opt=appUtil.extend({},defualtCfg);
     opt.v = req.headers['v'];
-    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/clue/waitFlow/${req.body.clueId}`;
+    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/attachment/thumbnail?videoname=${req.body.videoname}`;
     opt.callBack=function(error, response, body){
         if(error)
         {
@@ -175,30 +168,16 @@ function waitflow(req, res, next){
         }
     };
     httpClient(opt);
-    operation(req.body.clueId,req.headers['v']);
 }
-
-//操作去除小红点
-function operation(clueId,v){
-    defualtCfg.method="POST";
-    var opt=appUtil.extend({},defualtCfg);
-    opt.v = v;
-    opt.url=CONSTANT.remoteHost+":"+CONSTANT.remotePort+`/api/clue/operation/${clueId}`;
-    opt.callBack=function(error, response, body){
-    };
-    httpClient(opt);
-}
-
 
 module.exports = {
-    cluelist: cluelist,
-    cluedetail: cluedetail,
-    sharelist: sharelist,
-    clueremark: clueremark,
-    clueclose: clueclose,
-    linkmanupdate:linkmanupdate,
-    linkman:linkman,
-    remarklist:remarklist,
-    waitflow:waitflow,
-    operation:operation
+    customerlist: customerlist,
+    createcustomer: createcustomer,
+    taglist: taglist,
+    createtag: createtag,
+    list: list,
+    create:create,
+    recreate:recreate,
+    detail:detail,
+    getthubm:getthubm
 }
