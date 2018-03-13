@@ -12,5 +12,8 @@ router.post('/morelist', function(req, res, next) {
 
 router.post('/detail', function(req, res, next) {
     caseServer.detail(req, res, next);
-});
+});//listpagebyproducts
+router.post('/listpagebyproducts', function(req, res, next) {
+    caseServer.listpagebyproducts(req, res, next);
+});//
 module.exports = router;
